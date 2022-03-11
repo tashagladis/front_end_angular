@@ -1,0 +1,17 @@
+  <!-- Map -->
+  <div class="my-google-map">
+    <google-map [width]="null" [height]="null"  [options]="mapOptions">
+      <map-marker #marker="mapMarker"
+      *ngFor="let place of markers; let i = index" 
+      [position]="{ lat: place.position.lat, lng: place.position.lng }"
+     
+      (mapClick)="openInfoWindow(marker, i)"> 
+
+      <map-info-window>
+        {{ place.info }}
+      </map-info-window>
+  </map-marker>
+    
+     
+    </google-map>
+ </div>
