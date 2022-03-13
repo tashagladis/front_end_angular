@@ -21,11 +21,15 @@
             </mat-form-field>
 
             <div fxFlex="100" *ngIf="error!=''">
-                <p class="message-error">{{ error }}</p>
+                <p class="message-error">Login or Password not found!</p>
             </div>
 
             <div fxFlex="100" fxLayout="row" fxLayoutAlign="end">
-                <button mat-raised-button color="primary" (click)="submit()" class="sign-in">Sign In</button>
+                <button mat-raised-button color="primary" (click)="submit()" class="sign-in" [disabled]="!form.valid">Sign In</button>
+            </div>
+
+            <div fxFlex="100" fxLayout="row" fxLayoutAlign="end">
+                <a [routerLink]="['register']">Register</a>
             </div>
         </div>
     </form>

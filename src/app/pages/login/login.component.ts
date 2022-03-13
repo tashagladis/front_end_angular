@@ -31,24 +31,24 @@ export class LoginComponent implements OnInit {
     
 
     submit(): void {
-        // if (!this.form.valid) {
-        //     return;
-        // }
+        if (!this.form.valid) {
+            return;
+        }
 
-        // let params: any = {
-        //   Login: this.form.value.login,
-        //   Password: this.form.value.password
-        // };
+        let params: any = {
+          Login: this.form.value.login,
+          Password: this.form.value.password
+        };
       
 
-        // this._loginService.doLogin(params)
-        //     .then((val) => {
-        //       console.log("Ok")
-                this._router.navigateByUrl("/map")
+        this._loginService.doLogin(params)
+            .then((val) => {
+              console.log("Ok")
+                this._router.navigateByUrl("dashboard")
                     .finally(() => { });
-            // }).catch((err) => {
-            //     this.error = err.error.message;
-            // });
+            }).catch((err) => {
+                this.error = err.error.message;
+            });
     }
 
 }

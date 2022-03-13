@@ -1,0 +1,13 @@
+<div class="dashboard__wrapper">
+    <div class="sidebar__left">
+        <app-sidebar-left></app-sidebar-left>
+    </div>
+    <div class="dashboard__content">
+        <main>
+            <router-outlet *ngIf="true"></router-outlet>
+        </main>
+    </div>
+    <div class="sidebar__right">
+        <app-sidebar-right></app-sidebar-right>
+    </div>
+</div>

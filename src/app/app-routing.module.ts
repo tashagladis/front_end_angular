@@ -1,12 +1,28 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LayoutComponent } from './layouts/layout.component';
+import { EmptyComponent } from './layouts/empty/empty.component';
+import { DashboardComponent } from './layouts/dashboard/dashboard.component';
 
 export const appRoutes: Routes = [
-  { path: "", pathMatch: 'full', redirectTo: 'map' },
+  { path: "", pathMatch: 'full', redirectTo: 'login' },
   {
     path: "",
-    component: LayoutComponent,
+    component: EmptyComponent ,
+    children: [
+      {
+        path: "login",
+        loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule)
+      },
+      {
+        path: "register",
+        loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule)
+      }
+    ]
+  },
+  { path: "dashboard", pathMatch: 'full', redirectTo: 'dashboard/map' },
+  {
+    path: "dashboard",
+    component: DashboardComponent ,
     children: [
       {
         path: "dashboard",
@@ -19,7 +35,7 @@ export const appRoutes: Routes = [
     ]
   },
 
-  { path: '**', redirectTo: 'map' },
+  { path: '**', redirectTo: 'dashboard/map' },
 
 
 ];

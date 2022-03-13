@@ -1,21 +1,22 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { EmptyComponent } from './empty.component';
-import { SidebarLeftComponent } from 'src/app/components/sidebar-left/sidebar-left.component';
-import { SidebarRightComponent } from 'src/app/components/sidebar-right/sidebar-right.component';
+import { LoginModule } from 'src/app/pages/login/login.module';
+import { RegisterModule } from 'src/app/pages/register/register.module';
+
 
 
 @NgModule({
   declarations: [
     EmptyComponent,
-    SidebarLeftComponent,
-    SidebarRightComponent,
+
   ],
   imports: [
     CommonModule,
-    RouterModule 
+    RouterModule,
+    LoginModule,
+    RegisterModule 
   ],
   exports: [
       EmptyComponent

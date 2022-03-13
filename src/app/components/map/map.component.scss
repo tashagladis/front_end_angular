@@ -1,6 +1,27 @@
 .my-google-map{
     .map-container{
-      width: 800px;
+      width: 1000px;
       height: 600px;
     }
   }
+
+  .searchbar {
+    .searchbar__wrapper {
+        display: flex;
+        border: 1px solid lightgrey;
+        border-radius: 8px;
+        width: 40%;
+        padding: 10px;
+        svg {
+            width: 20px;
+        }
+        input {
+            border: none;
+            width: 100%;
+            margin-left: 10px;
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+}
