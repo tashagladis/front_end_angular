@@ -10,8 +10,27 @@ import { MapService } from './map.service';
   encapsulation: ViewEncapsulation.None
 })
 export class MapComponent implements OnInit {
+  
+  @ViewChild(GoogleMap, { static: false }) map: GoogleMap | undefined
+  @ViewChild('mapSearchField') searchField: ElementRef | undefined
+  title = 'Front';
+ 
+  mapOptions: google.maps.MapOptions = {
+    zoom: 14,
+    mapTypeControl: false, 
+    streetViewControl: false,
+    fullscreenControl: false
+  }
 
-  constructor(   private _mapService: MapService,) { }
+  @ViewChildren(MapInfoWindow)
+  infoWindowsView!: QueryList<MapInfoWindow>;
+
+  userList: any[] = [];
+  error: string = "";
+  markers = this.userList;
+  center!: google.maps.LatLngLiteral; 
+
+  constructor( private _mapService: MapService) { }
 
   ngOnInit(): void {
     this._mapService.getUsers()
@@ -34,30 +53,6 @@ export class MapComponent implements OnInit {
         }
       })
   }
-
-  
-  @ViewChild(GoogleMap, { static: false }) map: GoogleMap | undefined
-  @ViewChild('mapSearchField') searchField: ElementRef | undefined
-  title = 'Front';
- 
-
-  mapOptions: google.maps.MapOptions = {
-    zoom: 14,
-    mapTypeControl: false, 
-    streetViewControl: false,
-    fullscreenControl: false
-  }
-
-
-  @ViewChildren(MapInfoWindow)
-  infoWindowsView!: QueryList<MapInfoWindow>;
-
-
-  userList: any[] = [];
-  error: string = "";
-  markers = this.userList;
-  center!: google.maps.LatLngLiteral; 
-
 
         
 

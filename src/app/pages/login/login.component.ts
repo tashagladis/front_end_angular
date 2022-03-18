@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/pages/login/login.service';
+import { TokenStorageService } from './token-storage.service';
 
 
 @Component({
@@ -14,9 +15,15 @@ export class LoginComponent implements OnInit {
     form!: FormGroup;
     error: string = "";
 
+    isLoggedIn = false;
+    isLoginFailed = false;
+    errorMessage = '';
+  
+
     constructor(
         private _router: Router,
-        private _loginService: LoginService
+        private _loginService: LoginService,
+         private tokenStorage: TokenStorageService
     ) { }
 
     ngOnInit(): void {
@@ -25,6 +32,10 @@ export class LoginComponent implements OnInit {
             password: new FormControl('', Validators.compose([Validators.required])),
 
         });
+
+        if (this.tokenStorage.getToken()) {
+            this.isLoggedIn = true;
+          }
       }
 
    
@@ -44,9 +55,16 @@ export class LoginComponent implements OnInit {
         this._loginService.doLogin(params)
             .then((val) => {
               console.log("Ok")
+              this.tokenStorage.saveToken(val.token)
+                this.tokenStorage.saveUser(val)
+                this.isLoginFailed = false
+                this.isLoggedIn = true
                 this._router.navigateByUrl("dashboard")
-                    .finally(() => { });
-            }).catch((err) => {
+                
+
+            .finally(() => { });
+             })
+            .catch((err) => {
                 this.error = err.error.message;
             });
     }

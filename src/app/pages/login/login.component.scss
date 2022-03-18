@@ -10,7 +10,7 @@
   }
   
   .form-group {
-    background: rgba(40, 57, 101, .9);
+    background: rgb(92,43,226);
   
     .form-header {
       padding: 25px 50px;
@@ -26,6 +26,7 @@
     .form-container {
       padding: 50px;
       background-color: #fff;
+
   
       .toggle-secured {
         padding-bottom: 1.34375em;
@@ -34,6 +35,9 @@
       .sign-in {
         min-height: 48px;
         min-width: 150px;
+        background: rgb(92,43,226);
+        color: #fff;
+        
       }
   
       .message-error {

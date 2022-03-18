@@ -5,6 +5,10 @@ import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard.component';
 import { SidebarLeftComponent } from 'src/app/components/sidebar-left/sidebar-left.component';
 import { SidebarRightComponent } from 'src/app/components/sidebar-right/sidebar-right.component';
+import { HeaderComponent } from 'src/app/components/header/header.component';
+import { FooterComponent } from 'src/app/components/footer/footer.component';
+import { AvatarModule }from 'src/app/components/avatar/avatar.module';
+
 
 
 
@@ -13,11 +17,13 @@ import { SidebarRightComponent } from 'src/app/components/sidebar-right/sidebar-
     DashboardComponent ,
     SidebarLeftComponent,
     SidebarRightComponent,
-    
+    HeaderComponent,
+    FooterComponent 
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    AvatarModule
   ],
   exports: [
     DashboardComponent 

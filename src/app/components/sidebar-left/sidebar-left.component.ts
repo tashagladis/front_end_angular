@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SidebarleftService } from './sidebar-left.service';
 
 @Component({
   selector: 'app-sidebar-left',
@@ -6,17 +7,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidebar-left.component.scss']
 })
 export class SidebarLeftComponent implements OnInit {
+  
+  userList: any[] = [];
+  error: string = "";
 
-  constructor() { }
+  constructor(private _sidebar: SidebarleftService) { }
 
-   menus = [
-    { id:1,link: "/", title: "Home"},
-    { id:2,link: "/", title: "Projects" },
-    { id:3,link: "/", title: "Billing" },
-    { id:4,link: "/", title: "Team members" }
-  ]
+ 
 
   ngOnInit(): void {
+    this._sidebar.getUsers()
+    .subscribe(
+          data => {
+              this.userList = data;
+              console.log(this.userList)
+          },
+          error => {
+              this.error = error.error;
+          },
+      );
+
   }
 
 }

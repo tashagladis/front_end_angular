@@ -1,103 +1,133 @@
 <div class="login-wrap">
-    <form class="form-group" [formGroup]="form">
-        <div class="form-header">
-            <h2>Register</h2>
+    <div class="form-header">
+        <h2>Register</h2>
+    </div>
+  <mat-stepper #stepper>
+    <mat-step [stepControl]="firstFormGroup" label="Step 1" class="text-indigo-600">
+        <form [formGroup]="firstFormGroup">
+            <div class="form-container" fxLayout="column">
+                <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-label>Firstname</mat-label>
+                    <input matInput placeholder="Firstname" formControlName="firstname" type="text" autocomplete="new-firstname" required />
+                    <mat-error *ngIf="firstFormGroup.get('firstname')?.hasError('required')">
+                        Your firstname is required.
+                    </mat-error>
+                </mat-form-field>
+
+                <div fxFlex="100">
+    
+                <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-label>Lastname</mat-label>
+                    <input matInput placeholder="Lastname" formControlName="lastname" type="text" autocomplete="new-lastname" />
+                </mat-form-field>
+                <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-select placeholder="Gender" formControlName="gender" autocomplete="new-gender">
+                        <mat-option value="male"> Male </mat-option>
+                        <mat-option value="female"> Female </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                </div>
+    
+                <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="Email" formControlName="email" type="email" autocomplete="new-email" required />
+                    <mat-error *ngIf="firstFormGroup.get('email')?.hasError('required')">
+                        Your email is required.
+                    </mat-error>
+                </mat-form-field>
+    
+                <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-label>Phone</mat-label>
+                    <input matInput placeholder="Phone" formControlName="phone" type="phone" autocomplete="new-phone" required  pattern="[0-9]{10}"/>
+                    <mat-error *ngIf="firstFormGroup.get('phone')?.hasError('required')">
+                        Your phone is required.
+                    </mat-error>
+                    <mat-error *ngIf="firstFormGroup.get('phone')?.hasError('pattern')">Wrong phone number</mat-error>
+                </mat-form-field>
+            <div>
+              <button mat-button matStepperNext [disabled]="!firstFormGroup.valid">Next</button>
+            </div>
         </div>
+          </form>
+ 
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" label="Step 2">
+      <form [formGroup]="secondFormGroup">
         <div class="form-container" fxLayout="column">
-            <mat-form-field appearance="outline" fxFlex="100">
-                <mat-label>Firstname</mat-label>
-                <input matInput placeholder="Firstname" formControlName="firstname" type="text" autocomplete="new-firstname" required />
-                <mat-error *ngIf="form.get('firstname')?.hasError('required')">
-                    Your firstname is required.
-                </mat-error>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline" fxFlex="100">
-                <mat-label>Lastname</mat-label>
-                <input matInput placeholder="Lastname" formControlName="lastname" type="text" autocomplete="new-lastname" />
-            </mat-form-field>
-
-            <mat-form-field appearance="outline" fxFlex="100">
-                <mat-label>Email</mat-label>
-                <input matInput placeholder="Email" formControlName="email" type="email" autocomplete="new-email" required />
-                <mat-error *ngIf="form.get('email')?.hasError('required')">
-                    Your email is required.
-                </mat-error>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline" fxFlex="100">
-                <mat-label>Phone</mat-label>
-                <input matInput placeholder="Phone" formControlName="phone" type="phone" autocomplete="new-phone" required />
-                <mat-error *ngIf="form.get('phone')?.hasError('required')">
-                    Your phone is required.
-                </mat-error>
-            </mat-form-field>
-
             <mat-form-field appearance="outline" fxFlex="100">
                 <mat-label>Address</mat-label>
                 <input matInput placeholder="Address" formControlName="address" type="text" autocomplete="new-address" required />
-                <mat-error *ngIf="form.get('address')?.hasError('required')">
+                <mat-error *ngIf="secondFormGroup.get('address')?.hasError('required')">
                     Your address is required.
                 </mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="outline" fxFlex="100">
                 <mat-label>Zipcode</mat-label>
-                <input matInput placeholder="Zipcode" formControlName="zipcode" type="text" autocomplete="new-zipcode" required />
-                <mat-error *ngIf="form.get('zipcode')?.hasError('required')">
+                <input matInput placeholder="Zipcode" formControlName="zipcode" type="text" autocomplete="new-zipcode" required  pattern="[0-9]{5}"/>
+                <mat-error *ngIf="secondFormGroup.get('zipcode')?.hasError('required')">
                     Your zipcode is required.
                 </mat-error>
+                <mat-error *ngIf="secondFormGroup.get('zipcode')?.hasError('pattern')">Wrong must have 05 numbers</mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="outline" fxFlex="100">
                 <mat-label>City</mat-label>
                 <input matInput placeholder="City" formControlName="city" type="text" autocomplete="new-city" required />
-                <mat-error *ngIf="form.get('city')?.hasError('required')">
+                <mat-error *ngIf="secondFormGroup.get('city')?.hasError('required')">
                     Your city is required.
                 </mat-error>
-            </mat-form-field>
-
-            <div style="margin-top:10px;">
-                <div style="margin-right:3%; color:#6b6b6b;">
-                    <mat-label>Gender</mat-label>
-                </div>
-                <mat-radio-group formControlName="gender">
-                    <mat-radio-button value="Male">Male</mat-radio-button>
-                    <mat-radio-button value="Female">Female</mat-radio-button>
-                </mat-radio-group>
+            </mat-form-field>           
+            <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext [disabled]="!secondFormGroup.valid">Next</button>
             </div>
-
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="thirdFormGroup" label="Step 3">
+        <form [formGroup]="thirdFormGroup">
+            <div class="form-container" class="form-container"fxLayout="column">
             <mat-form-field appearance="outline" fxFlex="100">
                 <mat-label>Login</mat-label>
                 <input matInput placeholder="Name" formControlName="login" type="text" autocomplete="new-login" required />
-                <mat-error *ngIf="form.get('login')?.hasError('required')">
+                <mat-error *ngIf="thirdFormGroup.get('login')?.hasError('required')">
                     Your name is required.
                 </mat-error>
             </mat-form-field>
-
-            <mat-form-field appearance="outline" fxFlex="100">
+            <mat-form-field appearance="outline"  fxFlex="100">
                 <mat-label>Password</mat-label>
-                <input matInput placeholder="Password" formControlName="password" type="password" autocomplete="new-password"  required />
-                <mat-error *ngIf="form.get('password')?.hasError('required')">
+                <input matInput placeholder="Password" formControlName="password" type="password" autocomplete="new-password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$" />
+                <mat-error *ngIf="thirdFormGroup.get('password')?.hasError('required')">
                     Your password is required.
                 </mat-error>
+                <mat-error *ngIf="thirdFormGroup.get('password')?.hasError('pattern')">Password must be a combination of lower-case, upper-case, numbers, at least 9 characters long and one special charac</mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="outline" fxFlex="100">
                 <mat-label>Confirm password</mat-label>
-                <input matInput placeholder="Confirm password" formControlName="password2" type="password" autocomplete="new-password" required />
-                <mat-error *ngIf="form.get('password2')?.hasError('required')">
-                    Your password is required.
-                </mat-error>
+                <input matInput placeholder="Confirm password" formControlName="password2" type="password" autocomplete="new-password" required [errorStateMatcher]="matcher" />
+                <mat-error *ngIf="thirdFormGroup.get('password2')?.hasError('required')">
+                    Your confirm password is required.
+                </mat-error>   
+                <mat-error *ngIf="thirdFormGroup.hasError('notSame')">
+                    Passwords do not match
+                  </mat-error>           
             </mat-form-field>
-
+         
             <div fxFlex="100" *ngIf="error!=''">
                 <p class="message-error">Somethnig went wrong!</p>
             </div>
-
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
             <div fxFlex="100" fxLayout="row" fxLayoutAlign="end">
-                <button mat-raised-button color="primary" (click)="submit()" class="sign-in" [disabled]="!form.valid">Register</button>
+                <button mat-raised-button color="primary" (click)="submit()" class="sign-in" [disabled]="!thirdFormGroup.valid">Register</button>
             </div>
+          </div>
         </div>
-    </form>
+        </form>
+      </mat-step>
+  </mat-stepper>
 </div>
+
+  

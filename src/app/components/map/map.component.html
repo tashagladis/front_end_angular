@@ -1,16 +1,19 @@
 <!-- Map -->
 <div class="my-google-map">
-  
-
-     <input #mapSearchField type="search" placeholder="Enter an address"/>
+    <div class="flex items-center justify-center">
+        <div class="flex border-2 rounded">
+            <input #mapSearchField type="text" class="px-4 py-2 w-80" placeholder="Search an address ...">
+     
+        </div>
+    </div>
         
     <google-map [width]="null" [height]="null" [center]="center" [options]="mapOptions" >
         <map-marker #marker="mapMarker" *ngFor="let user of  userList; let i = index"
             [position]="{ lat: user.Latitude, lng: user.Longitude }" (mapClick)="openInfoWindow(marker, i)">
 
             <map-info-window>
-               <p><b>{{ user.Firstname }}</b>, {{ user.Lastname}}</p> 
-               <p><b>Gender : </b>{{ user.Genre}}</p> 
+               <p><b>{{ user.Firstname }}, {{ user.Lastname}}</b></p> 
+               <p>Gender : <b>{{ user.Genre}}</b></p> 
             </map-info-window>
         </map-marker>
 

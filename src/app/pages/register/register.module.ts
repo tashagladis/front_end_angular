@@ -12,6 +12,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
+import {MatStepperModule} from '@angular/material/stepper';
 
 const routes = [
     {
@@ -35,7 +36,8 @@ const routes = [
         FlexLayoutModule,
         MatSlideToggleModule,
         MatSelectModule,
-        MatRadioModule
+        MatRadioModule,
+        MatStepperModule
     ],
     
   exports: [
