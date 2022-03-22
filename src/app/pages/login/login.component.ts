@@ -51,10 +51,8 @@ export class LoginComponent implements OnInit {
           Password: this.form.value.password
         };
       
-
         this._loginService.doLogin(params)
             .then((val) => {
-              console.log("Ok")
               this.tokenStorage.saveToken(val.token)
                 this.tokenStorage.saveUser(val)
                 this.isLoginFailed = false

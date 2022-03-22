@@ -1,0 +1,34 @@
+<div class="chat" >
+    <div class="header" fxLayoutAlign="space-between center">
+        <div  fxLayoutAlign="start center" class="head">
+            <ng-container>
+                <avatar [name]="selectedUser"></avatar>
+                <div class="about">
+                    <div class="chat-with">Chat with <b>{{ selectedUser}}</b></div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+    <ng-container>
+        <div class="chat-history">
+            <ul>
+                <li *ngFor="let item of messages[selectedUser]">
+                    <message [message]="item"></message>
+                </li>
+            </ul>
+        </div>
+    </ng-container>
+ 
+ 
+    <form [formGroup]="form" class="footer"  fxLayout="row" fxLayoutAlign="space-between center">
+        <mat-form-field appearance="outline" fxFlex class="no-padding" > 
+            <mat-label>Type your message</mat-label>
+            <textarea matInput formControlName="message" placeholder="type..."></textarea>
+        </mat-form-field>
+        <button mat-icon-button (click)="sendMessage()" color="accent">
+            <mat-icon size="52">send</mat-icon>
+        </button>
+    </form>
+
+  
+</div>

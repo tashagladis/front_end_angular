@@ -1,0 +1,14 @@
+<ng-container *ngIf="message.type=='out';else templateOut">
+    <div class="message-data message-data-me">
+        <span class="message-data-name">me</span>
+        <i class="fa fa-circle me"></i>
+    </div>
+    <div class="message other-message float-right" [innerHTML]="message.message"></div>
+</ng-container>
+<ng-template #templateOut>
+    <div class="message-data">
+        <i class="fa fa-circle online"></i>
+        <span class="message-data-name" [innerHTML]="message.sender"></span>
+    </div>
+    <div class="message my-message" [innerHTML]="message.message"></div>
+</ng-template>

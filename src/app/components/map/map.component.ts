@@ -108,13 +108,7 @@ getBounds(markers: any){
   let south;
   let east;
   let west;
-  for (const marker of markers){
-    if(!isNaN((marker.Longitude) )){
-    console.log("Yes"+ typeof(marker.Latitude))
-    }else{
-      console.log("non")
-    }
-  }
+
 
   for (let marker of markers){
     

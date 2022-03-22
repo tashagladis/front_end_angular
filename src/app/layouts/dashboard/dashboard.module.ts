@@ -8,6 +8,8 @@ import { SidebarRightComponent } from 'src/app/components/sidebar-right/sidebar-
 import { HeaderComponent } from 'src/app/components/header/header.component';
 import { FooterComponent } from 'src/app/components/footer/footer.component';
 import { AvatarModule }from 'src/app/components/avatar/avatar.module';
+import { MessageModule } from 'src/app/components/message/message.module';
+
 
 
 
@@ -18,12 +20,14 @@ import { AvatarModule }from 'src/app/components/avatar/avatar.module';
     SidebarLeftComponent,
     SidebarRightComponent,
     HeaderComponent,
-    FooterComponent 
+    FooterComponent
+    
   ],
   imports: [
     CommonModule,
     RouterModule,
-    AvatarModule
+    AvatarModule,
+    MessageModule
   ],
   exports: [
     DashboardComponent 
