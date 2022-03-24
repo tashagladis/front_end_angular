@@ -13,6 +13,10 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import {MatStepperModule} from '@angular/material/stepper';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { FormsModule } from '@angular/forms'; 
+
+
 
 const routes = [
     {
@@ -37,7 +41,9 @@ const routes = [
         MatSlideToggleModule,
         MatSelectModule,
         MatRadioModule,
-        MatStepperModule
+        MatStepperModule,
+        MatToolbarModule,
+        FormsModule
     ],
     
   exports: [

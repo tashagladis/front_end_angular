@@ -1,0 +1,27 @@
+<div class="p-8 w-[990px] bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+    <div class="flex justify-between items-center mb-4">
+        <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white">List of Invitations</h5>
+   </div>
+   <div class="flow-root">
+        <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
+            <li class="py-3 sm:py-4" *ngFor="let user of invitList">
+                <div class="flex items-center space-x-4">
+                    <div class="flex-shrink-0">
+                        <avatar [name]="user.login"></avatar>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+                            {{user.login}}
+                        </p>
+                        <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                           {{user.email}}
+                        </p>
+                    </div>
+                    <div class="">
+                        <a href="#" class="p-2 lg:px-4 md:mx-2 text-pink-600 text-center border border-solid border-pink-600 rounded hover:bg-pink-600 hover:text-white transition-colors duration-300 mt-1 md:mt-0 md:ml-1">Add Friend</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+   </div>
+</div>

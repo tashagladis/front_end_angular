@@ -77,7 +77,7 @@
                 <mat-error *ngIf="secondFormGroup.get('city')?.hasError('required')">
                     Your city is required.
                 </mat-error>
-            </mat-form-field>           
+            </mat-form-field>     
             <div>
             <button mat-button matStepperPrevious>Back</button>
             <button mat-button matStepperNext [disabled]="!secondFormGroup.valid">Next</button>
@@ -85,7 +85,28 @@
         </div>
       </form>
     </mat-step>
-    <mat-step [stepControl]="thirdFormGroup" label="Step 3">
+    <mat-step label="Step 3">
+        <div class="form-container" class="form-container"fxLayout="column">
+        <mat-form-field >
+            <div class="myfilebrowser">
+                <mat-toolbar>          
+                  <!-- Readonly Input to show File names -->
+                  <input matInput [(ngModel)]="myfilename" readonly name="memberContactNo" />          
+                  <!-- Browse Button -->
+                  <button mat-flat-button color="primary">
+                    Browse
+                  </button>          
+                </mat-toolbar>         
+                <!-- Fetch selected filed on change -->
+                <input type="file" #UploadFileInput id="fileUpload" (change)="fileChangeEvent($event)" name="fileUpload"
+                  multiple="multiple" accept="image/*" />         
+              </div>
+            </mat-form-field>
+        </div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext >Next</button>
+    </mat-step> 
+    <mat-step [stepControl]="thirdFormGroup" label="Step 4">
         <form [formGroup]="thirdFormGroup">
             <div class="form-container" class="form-container"fxLayout="column">
             <mat-form-field appearance="outline" fxFlex="100">
@@ -127,6 +148,7 @@
         </div>
         </form>
       </mat-step>
+    
   </mat-stepper>
 </div>
 

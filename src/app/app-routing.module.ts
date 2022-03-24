@@ -35,6 +35,10 @@ export const appRoutes: Routes = [
       {
         path: "tchat",
         loadChildren: () => import('./pages/tchat/tchat.module').then(m => m.TchatModule)
+      },
+      {
+        path: "friends",
+        loadChildren: () => import('./pages/friends/friends.module').then(m => m.FriendsModule)
       }
     ]
   },

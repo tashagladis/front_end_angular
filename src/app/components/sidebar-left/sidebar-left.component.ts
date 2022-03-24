@@ -42,12 +42,13 @@ export class SidebarLeftComponent implements OnInit {
     .subscribe(
           data => {
               this.userMessages = data;
+              this._sidebar.messageOfUser.next(this.userMessages);
           },
           error => {
               this.error = error.error;
           },
       );
-      this._sidebar.messageOfUser.next(this.userMessages);
+ 
       this._sidebar.onListUsersUpdated.next(user);
 }
 

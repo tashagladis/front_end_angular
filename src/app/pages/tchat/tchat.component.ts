@@ -31,12 +31,12 @@ export class TchatComponent implements OnInit {
   ngOnInit(): void {
 
     this.form = new FormGroup({
-      message: new FormControl('', Validators.compose([])),
-  });
+        message: new FormControl('', Validators.compose([])),
+    });
 
     this.selectedUser = this.getUser();
     this._sidebar.onListUsersUpdated
-    .pipe(takeUntil(this._unsubscribeAll))
+    .pipe(takeUntil(this._unsubscribeAll), delay(5))
     .subscribe(data  => {  
       this.selectedUser = data;
     });
@@ -49,6 +49,7 @@ export class TchatComponent implements OnInit {
     });
     
   }
+  
 
   initMessage(data: any) {
 
@@ -87,6 +88,17 @@ sendMessage() {
          
       }).finally(() => {
           this.form.reset();
+      });
+}
+
+sendInvitation() {
+  
+  this._tchatservice.sendInvitaion(this.selectedUser)
+      .then(value => {
+          console.log(value)         
+      }).catch((err: { error: string; }) => {
+          this.error = err.error;
+         
       });
 }
 
