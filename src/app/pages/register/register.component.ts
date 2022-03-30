@@ -16,10 +16,13 @@ export class RegisterComponent implements OnInit {
   secondFormGroup!: FormGroup;
   thirdFormGroup!: FormGroup;
   error: string = "";
+  imgBase64Path : string = "";
+  type : string = "";
   matcher = new MyErrorStateMatcher();
 
   @ViewChild('UploadFileInput')uploadFileInput!: ElementRef;
   myfilename = 'Select Image';
+
 
   constructor(
       private _router: Router,
@@ -77,7 +80,10 @@ export class RegisterComponent implements OnInit {
         Phone: this.firstFormGroup.value.phone,
         Address: this.secondFormGroup.value.address,
         Zipcode: this.secondFormGroup.value.zipcode,
-        City: this.secondFormGroup.value.city
+        City: this.secondFormGroup.value.city,
+        ImageBasePath: this.imgBase64Path.toString(),
+        ImageType: this.type
+        
       };
     
       console.log(params)
@@ -85,7 +91,7 @@ export class RegisterComponent implements OnInit {
       this._registerService.doRegister(params)
           .then((val) => {
             console.log("Ok")
-              this._router.navigateByUrl("dashboard")
+              this._router.navigateByUrl("login")
                   .finally(() => { });
           }).catch((err) => {
               this.error = err.error.message;
@@ -103,6 +109,7 @@ export class RegisterComponent implements OnInit {
       Array.from(fileInput.target.files).forEach((file: any) => {
         console.log(file);
         this.myfilename += file.name + ',';
+        this.type = file.type
       });
 
       const reader = new FileReader();
@@ -112,7 +119,7 @@ export class RegisterComponent implements OnInit {
         image.onload = rs => {
 
           // Return Base64 Data URL
-          const imgBase64Path = e.target.result;
+          this.imgBase64Path = e.target.result;
 
         };
       };

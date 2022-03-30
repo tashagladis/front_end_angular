@@ -19,8 +19,6 @@ export class SidebarLeftComponent implements OnInit {
 
   constructor(private _sidebar: SidebarleftService) { }
 
- 
-
   ngOnInit(): void {
     this._sidebar.getUsers()
     .subscribe(

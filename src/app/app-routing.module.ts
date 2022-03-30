@@ -25,10 +25,6 @@ export const appRoutes: Routes = [
     component: DashboardComponent ,
     children: [
       {
-        path: "dashboard",
-        loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
-      },
-      {
         path: "map",
         loadChildren: () => import('./components/map/map.module').then(m => m.MapModule)
       },
@@ -39,6 +35,10 @@ export const appRoutes: Routes = [
       {
         path: "friends",
         loadChildren: () => import('./pages/friends/friends.module').then(m => m.FriendsModule)
+      },
+      {
+        path: "demands",
+        loadChildren: () => import('./pages/demands/demands.module').then(m => m.DemandsModule)
       }
     ]
   },

@@ -10,16 +10,17 @@ import { FriendsService } from './friends.service';
 
 
 export class FriendsComponent implements OnInit {
-  invitList: any[] = [];
+  friendList: any[] = [];
   error: string = "";
 
   constructor(private _friends: FriendsService) { }
 
   ngOnInit(): void {
-    this._friends.getInvitations()
+    this._friends.getFriends()
     .subscribe(
           data => {
-              this.invitList = data[0].invitations;
+              this.friendList = data[0].friends;
+             console.log(this.friendList)
           },
           error => {
               this.error = error.error;
