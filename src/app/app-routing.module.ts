@@ -39,6 +39,14 @@ export const appRoutes: Routes = [
       {
         path: "demands",
         loadChildren: () => import('./pages/demands/demands.module').then(m => m.DemandsModule)
+      },
+      {
+        path: "event",
+        loadChildren: () => import('./pages/dashboard/event/event.module').then(m => m.EventModule)
+      },
+      {
+        path: "events",
+        loadChildren: () => import('./pages/dashboard/events/events.module').then(m => m.EventsModule)
       }
     ]
   },

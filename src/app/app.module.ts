@@ -17,6 +17,7 @@ import { TokenInterceptor } from './pages/login/auth.interceptor';
 
 
 
+
 const routerConfig: ExtraOptions = {
   preloadingStrategy: PreloadAllModules,
   scrollPositionRestoration: 'enabled',
@@ -25,7 +26,8 @@ const routerConfig: ExtraOptions = {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+ 
   ],
   imports: [
     BrowserModule,

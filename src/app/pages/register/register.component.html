@@ -87,20 +87,20 @@
     </mat-step>
     <mat-step label="Step 3">
         <div class="form-container" class="form-container"fxLayout="column">
-        <mat-form-field >
-            <div class="myfilebrowser">
-                <mat-toolbar>          
-                  <!-- Readonly Input to show File names -->
-                  <input matInput [(ngModel)]="myfilename" readonly name="memberContactNo" />          
-                  <!-- Browse Button -->
-                  <button mat-flat-button color="primary">
-                    Browse
-                  </button>          
-                </mat-toolbar>         
-                <!-- Fetch selected filed on change -->
-                <input type="file" #UploadFileInput id="fileUpload" (change)="fileChangeEvent($event)" name="fileUpload"
-                  multiple="multiple" accept="image/*" />         
-              </div>
+            <mat-form-field >
+                <div class="myfilebrowser">
+                    <mat-toolbar>          
+                    <!-- Readonly Input to show File names -->
+                    <input matInput [(ngModel)]="myfilename" readonly name="memberContactNo" />          
+                    <!-- Browse Button -->
+                    <button mat-flat-button color="primary">
+                        Browse
+                    </button>          
+                    </mat-toolbar>         
+                    <!-- Fetch selected filed on change -->
+                    <input type="file" #UploadFileInput id="fileUpload" (change)="fileChangeEvent($event)" name="fileUpload"
+                    multiple="multiple" accept="image/*" />         
+                </div>
             </mat-form-field>
         </div>
         <button mat-button matStepperPrevious>Back</button>
@@ -137,7 +137,7 @@
             </mat-form-field>
          
             <div fxFlex="100" *ngIf="error!=''">
-                <p class="message-error">Somethnig went wrong!</p>
+                <p class="message-error">Something went wrong!</p>
             </div>
           <div>
             <button mat-button matStepperPrevious>Back</button>

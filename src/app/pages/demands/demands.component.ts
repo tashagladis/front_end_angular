@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DemandsService } from './demands.service';
 
 @Component({
@@ -10,7 +11,8 @@ export class DemandsComponent implements OnInit {
   invitList: any[] = [];
   error: string = "";
 
-  constructor(private _demands: DemandsService) { }
+  constructor(private _router: Router,
+    private _demands: DemandsService) { }
 
   ngOnInit(): void {
     this._demands.getInvitations()
@@ -29,6 +31,7 @@ export class DemandsComponent implements OnInit {
   
     this._demands.acceptInvitaion(login)
         .then(value => {
+          this._router.navigateByUrl("friends")
           window.location.reload();        
         }).catch((err: { error: string; }) => {
             this.error = err.error;

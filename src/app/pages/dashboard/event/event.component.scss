@@ -1,0 +1,67 @@
+.login-wrap {
+    width: 100%;
+    margin: auto;
+    max-width: 525px;
+    position: relative;
+    box-shadow: 0px 4px 15px 0 rgb(0 0 0 / 24%), 0 0px 15px 0 rgb(0 0 0 / 19%);
+    background: url(https://raw.githubusercontent.com/khadkamhn/day-01-login-form/master/img/bg.jpg) no-repeat center;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .form-group {
+    background: rgb(92,43,226);
+  
+    .form-header {
+      padding: 25px 50px;
+  
+      h2 {
+        color: #fff;
+        margin: 0;
+        text-align: center;
+        text-transform: uppercase;
+      }
+    }
+  
+    .form-container {
+      padding: 50px;
+      background-color: #fff;
+
+  
+      .toggle-secured {
+        padding-bottom: 1.34375em;
+      }
+  
+      .sign-in {
+        min-height: 48px;
+        min-width: 150px;
+        background: rgb(255,20,147);
+        color: #fff;
+        
+      }
+  
+      .message-error {
+          color: rgb(228, 0, 0);
+          font-weight: 500;
+          text-align: right;
+      }
+    }
+  }
+  
+  app-login {
+    height: 100%;
+  }
+  #fileUpload {
+    position: absolute;
+    z-index: 9;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    left: 0px;
+    top: 0px;
+    cursor: pointer;
+  }
+  .button{
+    margin-top: 40px;
+  }
+  

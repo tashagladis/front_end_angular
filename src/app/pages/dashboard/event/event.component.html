@@ -1,0 +1,82 @@
+<div class="p-8 w-[990px] bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+    <div class="flex justify-between items-center mb-4">
+        <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Create an event</h5>
+   </div>
+   <form class="form-group" [formGroup]="form">
+    <div class="form-container" fxLayout="column">
+        <mat-form-field appearance="outline" fxFlex="100">
+            <mat-label>Title</mat-label>
+            <input matInput placeholder="Title" formControlName="title" type="text" required />
+            <mat-error *ngIf="form.get('title')?.hasError('required')">
+                The title is required.
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" fxFlex="100">
+            <mat-label>Address</mat-label>
+            <input matInput placeholder="Address" formControlName="address" type="text"  required />
+            <mat-error *ngIf="form.get('address')?.hasError('required')">
+                The address is required.
+            </mat-error>
+        </mat-form-field>
+
+        <div fxFlex="100">           
+            <mat-form-field appearance="outline" fxFlex="100">
+                <mat-label>Zipcode</mat-label>
+                <input matInput placeholder="Zipcode" formControlName="zipcode" type="text" required  pattern="[0-9]{5}"/>
+                <mat-error *ngIf="form.get('zipcode')?.hasError('required')">
+                    The zipcode is required.
+                </mat-error>
+                <mat-error *ngIf="form.get('zipcode')?.hasError('pattern')">Wrong must have 05 numbers</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" fxFlex="100">
+                <mat-label>City</mat-label>
+                <input matInput placeholder="City" formControlName="city" type="text"  required />
+                <mat-error *ngIf="form.get('city')?.hasError('required')">
+                    The city is required.
+                </mat-error>
+            </mat-form-field> 
+        </div>
+        
+        <div fxFlex="100">            
+            <mat-form-field appearance="outline" fxFlex="100">
+                <mat-label>Choose a date</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="outline" fxFlex="100">
+            <mat-label>Hour</mat-label>
+            <input matInput placeholder="Hour" formControlName="hour" type="text" required/>
+            <mat-error *ngIf="form.get('Hour')?.hasError('required')">
+                The hour is required.
+            </mat-error>
+            </mat-form-field>
+        </div>    
+
+        <mat-form-field  fxFlex="100">
+            <div class="myfilebrowser">
+                <mat-toolbar>          
+                <!-- Readonly Input to show File names -->
+                <input matInput [ngModelOptions]="{standalone: true}" [(ngModel)]="myfilename" readonly />          
+                <!-- Browse Button -->
+                <button mat-flat-button color="gray">
+                    Browse
+                </button>          
+                </mat-toolbar>         
+                <!-- Fetch selected filed on change -->
+                <input type="file" #UploadFileInput id="fileUpload" (change)="fileChangeEvent($event)" name="fileUpload"
+                multiple="multiple" accept="image/*" />         
+            </div>
+        </mat-form-field>
+
+        <div fxFlex="100" *ngIf="error!=''">
+            <p class="message-error">Something went wrong!</p>
+        </div>
+
+        <div fxFlex="100" fxLayout="row" fxLayoutAlign="end" class="button">
+            <button mat-raised-button color="primary" (click)="submit()" class="sign-in" [disabled]="!form.valid">Create</button>
+        </div>
+    </div>
+</form>
+  
+</div>

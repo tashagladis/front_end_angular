@@ -1,11 +1,18 @@
 
 <div class="sidebar__content">
     <p>sidebar-right works!</p>
+    <a  [routerLink]="['event']"class="p-2 lg:px-4 md:mx-2 text-pink-600 text-center border border-solid border-pink-600 rounded hover:bg-pink-600 hover:text-white transition-colors duration-300 mt-1 md:mt-0 md:ml-1">+ .Event</a>
+    <br>
+    <br>
     <a [routerLink]="['demands']" class="link">
         List of Demands
     </a>
     <br>
     <a [routerLink]="['friends']" class="link">
         List of Friends
+    </a>
+    <br>
+    <a [routerLink]="['events']" class="link">
+        List of Events
     </a>
 </div>
