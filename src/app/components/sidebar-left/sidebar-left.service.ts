@@ -9,12 +9,14 @@ import { Observable, Subject } from 'rxjs';
 export class SidebarleftService implements Resolve<any>{
 
     messageOfUser: Subject<any>;
+    demand: Subject<any>;
     onListUsersUpdated: Subject<any>;
 
     constructor( 
         private _httpClient: HttpClient) {
         this.onListUsersUpdated = new Subject();
         this.messageOfUser = new Subject();
+        this.demand = new Subject();
     }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
@@ -38,4 +40,7 @@ export class SidebarleftService implements Resolve<any>{
         return this._httpClient.get(`http://localhost:55697/api/message/getmessages/${username}`);
     }
 
+    demandSend(username: string): Observable<any> {
+        return this._httpClient.get(`http://localhost:55697/api/user/demandsend/${username}`);
+    }
 }

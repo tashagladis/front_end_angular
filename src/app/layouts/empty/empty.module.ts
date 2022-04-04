@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { EmptyComponent } from './empty.component';
-import { LoginModule } from 'src/app/pages/login/login.module';
-import { RegisterModule } from 'src/app/pages/register/register.module';
+import { LoginModule } from 'src/app/pages/empty/login/login.module';
+import { RegisterModule } from 'src/app/pages/empty/register/register.module';
 
 
 

@@ -11,10 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {  DashboardModule } from './layouts/dashboard/dashboard.module';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { TokenInterceptor } from './pages/login/auth.interceptor';
-
-
-
+import { TokenInterceptor } from './pages/empty/login/auth.interceptor';
 
 
 
@@ -26,8 +23,7 @@ const routerConfig: ExtraOptions = {
 
 @NgModule({
   declarations: [
-    AppComponent,
- 
+    AppComponent
   ],
   imports: [
     BrowserModule,

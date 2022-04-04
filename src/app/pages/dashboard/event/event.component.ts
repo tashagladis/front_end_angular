@@ -54,7 +54,7 @@ export class EventComponent implements OnInit {
   
     this._eventService.createEvent(params)
         .then((val) => {
-          this._router.navigateByUrl("events")      
+          this._router.navigateByUrl("dashboard/events")      
          })
         .catch((err) => {
             this.error = err.error.message;

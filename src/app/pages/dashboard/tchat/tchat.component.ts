@@ -18,6 +18,7 @@ export class TchatComponent implements OnInit {
   messages: any = {};
   error: string = "";
   tchatservice : any;
+  demandsend: boolean = false;
   private _unsubscribeAll: Subject<any>;
   form!: FormGroup; 
 
@@ -41,12 +42,20 @@ export class TchatComponent implements OnInit {
       this.selectedUser = data;
     });
 
+      this._sidebar.demand
+      .pipe(takeUntil(this._unsubscribeAll), delay(5))
+      .subscribe(data => {
+        this.demandsend = data
+        console.log(this.demandsend)
+      });
+
+
     this._sidebar.messageOfUser
     .pipe(takeUntil(this._unsubscribeAll), delay(50))
     .subscribe(datas => {
       this.initMessage(datas);
-      console.log(this.messages[this.selectedUser])
     });
+  
     
   }
   
@@ -54,9 +63,7 @@ export class TchatComponent implements OnInit {
   initMessage(data: any) {
 
         this.messages[this.selectedUser] = [];
-        console.log(data)
     data.forEach((element: any) => {
-      console.log(this.selectedUser+" "+element.Sender)
       if(element.Sender.toLowerCase( ) == this.selectedUser){
        
         this.messages[this.selectedUser].push({ type: 'in', message: element.Text, sender: element.Sender  });
@@ -74,7 +81,7 @@ sendMessage() {
   let params: any = {
     Text: formData.message
   };
-  console.log(params)
+
   
   this._tchatservice.sendMessage(this.selectedUser, params)
       .then(value => {
@@ -95,7 +102,7 @@ sendInvitation() {
   
   this._tchatservice.sendInvitaion(this.selectedUser)
       .then(value => {
-          console.log(value)         
+        window.location.reload()      
       }).catch((err: { error: string; }) => {
           this.error = err.error;
          

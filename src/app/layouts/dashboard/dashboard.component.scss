@@ -3,7 +3,7 @@
     justify-content: space-between;
     .sidebar {
         &__left {
-            width: 15%;
+            width: 350px;
         }
         &__right {
             width: 15%;
@@ -12,5 +12,6 @@
     .dashboard__content {
         width: 55%;
         padding: 20px;
+        margin-left: -170px;
     }
 }

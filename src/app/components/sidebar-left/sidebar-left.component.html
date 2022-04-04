@@ -3,7 +3,7 @@
     <nav class="sidebar__nav">
         <ul class="list">
             <li *ngFor="let user of userList">
-                <div fxLayout="row" fxLayoutAlign="start center"  class="user-item"  class="user-item">
+                <div fxLayout="row" fxLayoutAlign="start center"  class="user-item"  class="user-item" [ngClass]="{'active': User == user}">
                     <a [routerLink]="['tchat']" class="link" (click)="selectUser(user)">
                         <avatar [name]="user"></avatar>
                         <div class="name"><b>{{ user}}</b></div>

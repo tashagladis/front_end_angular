@@ -19,7 +19,6 @@ export class DemandsComponent implements OnInit {
     .subscribe(
           data => {
               this.invitList = data[0].invitations;
-              console.log("okay")
           },
           error => {
               this.error = error.error;
@@ -31,8 +30,7 @@ export class DemandsComponent implements OnInit {
   
     this._demands.acceptInvitaion(login)
         .then(value => {
-          this._router.navigateByUrl("friends")
-          window.location.reload();        
+          this._router.navigateByUrl("dashboard/friends")        
         }).catch((err: { error: string; }) => {
             this.error = err.error;
            

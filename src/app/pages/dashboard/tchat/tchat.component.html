@@ -9,7 +9,8 @@
             </ng-container>
         </div>
         <div>
-            <a [routerLink]="[]" (click)="sendInvitation()" class="p-2 lg:px-4 md:mx-2 text-white rounded bg-pink-500">Add</a>
+            <a *ngIf="!demandsend" [routerLink]="[]" (click)="sendInvitation()" class="p-2 lg:px-4 md:mx-2 text-white rounded bg-pink-500">Add</a>
+            <a [title]="selectedUser" [routerLink]="['../profil', selectedUser]" class="p-2 lg:px-4 md:mx-2 text-white rounded bg-indigo-600">Profil</a>
         </div>
     </div>
     <ng-container>

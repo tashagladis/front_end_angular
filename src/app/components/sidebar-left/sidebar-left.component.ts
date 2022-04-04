@@ -10,8 +10,10 @@ import { SidebarleftService } from './sidebar-left.service';
 export class SidebarLeftComponent implements OnInit {
   
   userList: any[] = [];
+  filteredItems: any[] = [];
   userMessages: any[] = [];
   error: string = "";
+  searchTerm: string = "";
 
    USER_KEY = 'tchat-user';
    User: any = null;
@@ -34,6 +36,7 @@ export class SidebarLeftComponent implements OnInit {
 
   selectUser(user: any) {
     this.User = user;
+    console.log(this.User)
     window.sessionStorage.removeItem(this.USER_KEY);
     window.sessionStorage.setItem(this.USER_KEY, JSON.stringify(user));
     this._sidebar.getMessages(user)
@@ -41,13 +44,38 @@ export class SidebarLeftComponent implements OnInit {
           data => {
               this.userMessages = data;
               this._sidebar.messageOfUser.next(this.userMessages);
+             
           },
           error => {
               this.error = error.error;
           },
       );
+
+      this._sidebar.demandSend(user)
+      .subscribe(
+            data => {
+                this._sidebar.demand.next(data);              
+            },
+            error => {
+                this.error = error.error;
+            },
+        );
  
       this._sidebar.onListUsersUpdated.next(user);
+     
 }
+
+/* assignCopy(){
+    this.filteredItems = Object.assign([], this.userList);
+ }
+ filterItem(value: string){
+    if(!value){
+        this.assignCopy();
+    } // when nothing has typed
+    this.filteredItems = Object.assign([], this.userList).filter(
+       item => String(item).toLowerCase().indexOf(value.toLowerCase()) > -1
+    )
+ } */
+
 
 }

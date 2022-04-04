@@ -11,11 +11,11 @@ export const appRoutes: Routes = [
     children: [
       {
         path: "login",
-        loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule)
+        loadChildren: () => import('./pages/empty/login/login.module').then(m => m.LoginModule)
       },
       {
         path: "register",
-        loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule)
+        loadChildren: () => import('./pages/empty/register/register.module').then(m => m.RegisterModule)
       }
     ]
   },
@@ -30,15 +30,15 @@ export const appRoutes: Routes = [
       },
       {
         path: "tchat",
-        loadChildren: () => import('./pages/tchat/tchat.module').then(m => m.TchatModule)
+        loadChildren: () => import('./pages/dashboard/tchat/tchat.module').then(m => m.TchatModule)
       },
       {
         path: "friends",
-        loadChildren: () => import('./pages/friends/friends.module').then(m => m.FriendsModule)
+        loadChildren: () => import('./pages/dashboard/friends/friends.module').then(m => m.FriendsModule)
       },
       {
         path: "demands",
-        loadChildren: () => import('./pages/demands/demands.module').then(m => m.DemandsModule)
+        loadChildren: () => import('./pages/dashboard/demands/demands.module').then(m => m.DemandsModule)
       },
       {
         path: "event",
@@ -47,7 +47,15 @@ export const appRoutes: Routes = [
       {
         path: "events",
         loadChildren: () => import('./pages/dashboard/events/events.module').then(m => m.EventsModule)
-      }
+      },
+      {
+        path: "profil/:userName",
+        loadChildren: () => import('./pages/dashboard/profil/profil.module').then(m => m.ProfileModule)
+      },
+      {
+        path: "participants/:eventId",
+        loadChildren: () => import('./pages/dashboard/participants/participants.module').then(m => m.ParticipantsModule)
+      },
     ]
   },
 
