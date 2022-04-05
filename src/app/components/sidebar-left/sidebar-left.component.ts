@@ -10,6 +10,7 @@ import { SidebarleftService } from './sidebar-left.service';
 export class SidebarLeftComponent implements OnInit {
   
   userList: any[] = [];
+  userAll: any[] = [];
   filteredItems: any[] = [];
   userMessages: any[] = [];
   error: string = "";
@@ -26,6 +27,7 @@ export class SidebarLeftComponent implements OnInit {
     .subscribe(
           data => {
               this.userList = data;
+              this.userAll = this.userList;
           },
           error => {
               this.error = error.error;
@@ -65,17 +67,9 @@ export class SidebarLeftComponent implements OnInit {
      
 }
 
-/* assignCopy(){
-    this.filteredItems = Object.assign([], this.userList);
- }
- filterItem(value: string){
-    if(!value){
-        this.assignCopy();
-    } // when nothing has typed
-    this.filteredItems = Object.assign([], this.userList).filter(
-       item => String(item).toLowerCase().indexOf(value.toLowerCase()) > -1
-    )
- } */
+search(value: string): void {
+    this.userList = this.userAll.filter((val) => val.toLowerCase().includes(value));
+}
 
 
 }

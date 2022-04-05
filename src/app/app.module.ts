@@ -15,6 +15,9 @@ import { TokenInterceptor } from './pages/empty/login/auth.interceptor';
 
 
 
+
+
+
 const routerConfig: ExtraOptions = {
   preloadingStrategy: PreloadAllModules,
   scrollPositionRestoration: 'enabled',
@@ -30,7 +33,10 @@ const routerConfig: ExtraOptions = {
     RouterModule.forRoot(appRoutes,routerConfig),
     EmptyModule,
     DashboardModule ,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+
+
+    
   ],
   providers: [
     {

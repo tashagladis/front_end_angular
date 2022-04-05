@@ -11,9 +11,10 @@
         <map-marker #marker="mapMarker" *ngFor="let user of  userList; let i = index"
             [position]="{ lat: user.Latitude, lng: user.Longitude }" (mapClick)="openInfoWindow(marker, i)">
 
-            <map-info-window>
+            <map-info-window  class="w-80">
                <p><b>{{ user.Firstname }}, {{ user.Lastname}}</b></p> 
                <p>Gender : <b>{{ user.Genre}}</b></p> 
+               <a [routerLink]="['../tchat']" (click)="selectUser(user.Login)" class="p-2 lg:px-4 md:mx-2 text-white rounded bg-pink-600">Tchat</a>
             </map-info-window>
         </map-marker>
 

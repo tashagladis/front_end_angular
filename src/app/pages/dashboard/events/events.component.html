@@ -13,6 +13,9 @@
                             {{event.Address + ", "+event.ZipCode+ " "+event.City}}
                         </p>
                         <p class="text-gray-600 text-xs">{{event.Hour}}</p>
+                        <a [routerLink]="['../participants', event.ID]" class="text-blue-800 text-xs">
+                          Participants
+                      </a>
                       </div>
                     </div>
                 

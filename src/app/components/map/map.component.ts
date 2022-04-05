@@ -29,6 +29,9 @@ export class MapComponent implements OnInit {
   error: string = "";
   markers = this.userList;
   center!: google.maps.LatLngLiteral; 
+  USER_KEY = 'tchat-user';
+  userMessages: any[] = [];
+  User: any = null;
 
   constructor( private _mapService: MapService) { }
 
@@ -121,6 +124,30 @@ getBounds(markers: any){
   const bounds = { north, south, east, west };
 
   return bounds;
+}
+
+
+selectUser(user: any) {
+  this.User = user;
+  console.log(this.User)
+  window.sessionStorage.removeItem(this.USER_KEY);
+  window.sessionStorage.setItem(this.USER_KEY, JSON.stringify(user));
+  this._mapService.getMessages(user)
+  .subscribe(
+        data => {
+            this.userMessages = data;
+            this._mapService.messageOfUser.next(this.userMessages);
+           
+        },
+        error => {
+            this.error = error.error;
+        },
+    );
+
+  
+
+    this._mapService.onListUsersUpdated.next(user);
+   
 }
 
 }

@@ -10,12 +10,14 @@ export class MapService implements Resolve<any>{
 
     onUserSelected: Subject<any>;
     onListUsersUpdated: Subject<any>;
+    messageOfUser: Subject<any>;
 
     constructor(
         private _httpClient: HttpClient,
     ) {
         this.onListUsersUpdated = new Subject();
         this.onUserSelected = new Subject();
+        this.messageOfUser = new Subject();
     }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
@@ -33,6 +35,10 @@ export class MapService implements Resolve<any>{
 
     getUsers(): Observable<any> {
         return this._httpClient.get(`http://localhost:55697/api/user`);
+    }
+
+    getMessages(username: string): Observable<any> {
+        return this._httpClient.get(`http://localhost:55697/api/message/getmessages/${username}`);
     }
 
 }
