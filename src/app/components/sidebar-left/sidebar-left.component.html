@@ -5,7 +5,7 @@
         <div class="flex items-center justify-center">
             <div class="flex border-2 rounded">
                 <input type="text" class="px-4 py-2 w-64" type="text" name="searchTerm" placeholder="Filter by name"
-                [(ngModel)]="searchTerm" (input)="search($any($event).target.value.toLowerCase())" />
+                [(ngModel)]="searchTerm" (input)="search($any($event).target.value.toLocaleLowerCase())" />
                 <button class="flex items-center justify-center px-4 border-l">
                     <svg class="w-6 h-6 text-gray-600" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24">
@@ -15,14 +15,14 @@
                 </button>
             </div>
         </div>
-      </form>
+      </form> 
     <nav class="sidebar__nav mt-4">
         <ul class="list">
             <li *ngFor="let user of userList | searchFilter: searchTerm; index as i ">
-                <div fxLayout="row" fxLayoutAlign="start center"  class="user-item"  class="user-item" [ngClass]="{'active': User == user}">
-                    <a [routerLink]="['tchat']" class="link" (click)="selectUser(user)">
-                        <avatar [name]="user"></avatar>
-                        <div class="name"><b>{{ user}}</b></div>
+                <div fxLayout="row" fxLayoutAlign="start center"  class="user-item"  class="user-item" [ngClass]="{'active': User == user.login}">
+                    <a [routerLink]="['tchat']" class="link" (click)="selectUser(user.login)">
+                        <img class="mb-3 w-10 h-10 rounded-full shadow-lg" src={{user.imageBasePath}}  alt="User image"/>
+                        <div class="name"><b>{{ user.login}}</b></div>
                     </a>
                 </div>
             </li>

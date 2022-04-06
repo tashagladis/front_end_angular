@@ -64,7 +64,7 @@ export class TchatComponent implements OnInit {
 
         this.messages[this.selectedUser] = [];
     data.forEach((element: any) => {
-      if(element.Sender.toLowerCase( ) == this.selectedUser){
+      if(element.Sender == this.selectedUser){
        
         this.messages[this.selectedUser].push({ type: 'in', message: element.Text, sender: element.Sender  });
       }else{

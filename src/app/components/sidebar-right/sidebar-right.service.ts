@@ -20,7 +20,7 @@ export class SidebarrightService implements Resolve<any>{
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
         return new Promise((resolve, reject) => {
             Promise.all([
-                this.getUsers()
+                this.getMe()
             ]).then(
                 ([datas]: [any]) => {
                     resolve(datas);
@@ -30,12 +30,11 @@ export class SidebarrightService implements Resolve<any>{
         });
     }
 
-    getUsers(): Observable<any> {
-        return this._httpClient.get(`http://localhost:55697/api/message/users`);
-    }
+  
 
-    getMessages(username: string): Observable<any> {
-        return this._httpClient.get(`http://localhost:55697/api/message/getmessages/${username}`);
+    
+    getMe(): Observable<any> {
+        return this._httpClient.get(`http://localhost:55697/api/user/mydatas`);
     }
 
 }

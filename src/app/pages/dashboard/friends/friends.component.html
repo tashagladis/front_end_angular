@@ -7,7 +7,7 @@
             <li class="py-3 sm:py-4" *ngFor="let user of friendList">
                 <div class="flex items-center space-x-4">
                     <div class="flex-shrink-0">
-                        <avatar [name]="user.name"></avatar>
+                        <img class="mb-3 w-10 h-10 rounded-full shadow-lg" src={{user.imageBasePath}}  alt="User image"/>
                     </div>
                     <div class="flex-1 min-w-0">
                         
@@ -16,7 +16,7 @@
                         </p>
                     </div>
                     <div class="">
-                        <a href="#" class="p-2 lg:px-4 md:mx-2 text-white rounded bg-indigo-600">Profil</a>
+                        <a [routerLink]="['../profil', user.name]" class="p-2 lg:px-4 md:mx-2 text-white rounded bg-indigo-600">Profil</a>
                     </div>
                 </div>
             </li>

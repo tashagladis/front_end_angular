@@ -92,7 +92,7 @@ export class RegisterComponent implements OnInit {
       this._registerService.doRegister(params)
           .then((val) => {
             console.log("Ok")
-              this._router.navigateByUrl("login")
+              this._router.navigateByUrl("")
                   .finally(() => { });
           }).catch((err) => {
               this.error = err.error.message;

@@ -28,6 +28,7 @@ export class SidebarLeftComponent implements OnInit {
           data => {
               this.userList = data;
               this.userAll = this.userList;
+              console.log(this.userList)
           },
           error => {
               this.error = error.error;
@@ -68,7 +69,7 @@ export class SidebarLeftComponent implements OnInit {
 }
 
 search(value: string): void {
-    this.userList = this.userAll.filter((val) => val.toLowerCase().includes(value));
+    this.userList = this.userAll.filter((val) => val.toLocaleLowerCase().includes(value));
 }
 
 

@@ -7,7 +7,7 @@
             <li class="py-3 sm:py-4" *ngFor="let user of invitList">
                 <div class="flex items-center space-x-4">
                     <div class="flex-shrink-0">
-                        <avatar [name]="user.login"></avatar>
+                        <img class="mb-3 w-10 h-10 rounded-full shadow-lg" src={{user.imageBasePath}}  alt="User image"/>
                     </div>
                     <div class="flex-1 min-w-0">
                         <p class="text-sm font-medium text-gray-900 truncate dark:text-white">

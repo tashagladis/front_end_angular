@@ -40,9 +40,6 @@ export class MapComponent implements OnInit {
     .subscribe(
           data => {
               this.userList = data;
-              console.log(this.userList)
-           
-
           },
           error => {
               this.error = error.error;
