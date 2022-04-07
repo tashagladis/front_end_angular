@@ -63,6 +63,15 @@ export class SidebarLeftComponent implements OnInit {
                 this.error = error.error;
             },
         );
+        this._sidebar.demandAccept(user)
+        .subscribe(
+            data => {
+                this._sidebar.accept.next(data);              
+            },
+            error => {
+                this.error = error.error;
+            },
+        );
  
       this._sidebar.onListUsersUpdated.next(user);
      

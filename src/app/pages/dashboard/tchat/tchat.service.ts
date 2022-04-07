@@ -51,8 +51,8 @@ export class TchatService implements Resolve<any>{
                 }, reject);
         });
     }
+    
 
-  
     getUsers(): Observable<any> {
         return this._httpClient.get(`http://localhost:55697/api/message/users`);
     }

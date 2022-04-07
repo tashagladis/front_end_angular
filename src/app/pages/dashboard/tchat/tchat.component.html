@@ -9,8 +9,14 @@
             </ng-container>
         </div>
         <div>
-            <a *ngIf="!demandsend" [routerLink]="[]" (click)="sendInvitation()" class="p-2 lg:px-4 md:mx-2 text-white rounded bg-pink-500">Add</a>
-            <a [title]="selectedUser" [routerLink]="['../profil', selectedUser]" class="p-2 lg:px-4 md:mx-2 text-white rounded bg-indigo-600">Profil</a>
+            <ng-container *ngIf="!demandsend && !demandaccept; else templateOut">
+                <a  [routerLink]="[]" (click)="sendInvitation()" class="p-2 lg:px-4 md:mx-2 text-white rounded bg-pink-500">Add</a>
+            </ng-container>
+            <ng-template #templateOut>
+                <a *ngIf="demandaccept"  #active [title]="selectedUser" [routerLink]="['../profil', selectedUser]" class="p-2 lg:px-4 md:mx-2 text-white rounded bg-indigo-600">Profil</a>
+            </ng-template>
+            
+            
         </div>
     </div>
     <ng-container>

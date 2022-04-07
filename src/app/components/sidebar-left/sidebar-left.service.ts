@@ -10,6 +10,7 @@ export class SidebarleftService implements Resolve<any>{
 
     messageOfUser: Subject<any>;
     demand: Subject<any>;
+    accept: Subject<any>;
     onListUsersUpdated: Subject<any>;
 
     constructor( 
@@ -17,6 +18,7 @@ export class SidebarleftService implements Resolve<any>{
         this.onListUsersUpdated = new Subject();
         this.messageOfUser = new Subject();
         this.demand = new Subject();
+        this.accept= new Subject();
     }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
@@ -43,4 +45,9 @@ export class SidebarleftService implements Resolve<any>{
     demandSend(username: string): Observable<any> {
         return this._httpClient.get(`http://localhost:55697/api/user/demandsend/${username}`);
     }
+
+    demandAccept(username: string): Observable<any> {
+        return this._httpClient.get(`http://localhost:55697/api/user/demandaccept/${username}`);
+    }
+
 }

@@ -5,6 +5,7 @@ import { delay, takeUntil } from 'rxjs/operators';
 import { SidebarleftService } from 'src/app/components/sidebar-left/sidebar-left.service';
 import { TchatService } from './tchat.service';
 import 'rxjs/add/operator/timeout'
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-tchat',
@@ -19,6 +20,7 @@ export class TchatComponent implements OnInit {
   error: string = "";
   tchatservice : any;
   demandsend: boolean = false;
+  demandaccept: boolean = false;
   private _unsubscribeAll: Subject<any>;
   form!: FormGroup; 
 
@@ -42,12 +44,25 @@ export class TchatComponent implements OnInit {
       this.selectedUser = data;
     });
 
-      this._sidebar.demand
-      .pipe(takeUntil(this._unsubscribeAll), delay(5))
-      .subscribe(data => {
-        this.demandsend = data
-        console.log(this.demandsend)
-      });
+    setTimeout(() =>{
+      console.log("test timeout");
+    },300)
+
+
+    this._sidebar.demand
+    .pipe(takeUntil(this._unsubscribeAll), delay(5))
+    .subscribe(data => {
+      this.demandsend = data
+
+    });
+
+    this._sidebar.accept
+    .pipe(takeUntil(this._unsubscribeAll), delay(5))
+    .subscribe(data => {
+      this.demandaccept = data
+      console.log(this.demandaccept)
+    });
+
 
 
     this._sidebar.messageOfUser
@@ -102,7 +117,7 @@ sendInvitation() {
   
   this._tchatservice.sendInvitaion(this.selectedUser)
       .then(value => {
-        window.location.reload()      
+        Swal.fire('The demand has been send to  '+ this.selectedUser)      
       }).catch((err: { error: string; }) => {
           this.error = err.error;
          

@@ -8,7 +8,7 @@ import { ProfilService } from './profil.service';
   styleUrls: ['./profil.component.scss']
 })
 export class ProfilComponent implements OnInit {
-  user: any;
+  User!: any ;
   error: string = "";
   eventList: any[] = [];
 
@@ -22,8 +22,7 @@ export class ProfilComponent implements OnInit {
     this._profilService.getYourDatas(userNameFromRoute)
     .subscribe(
           data => {
-              
-              console.log(data)
+              this.User = data[0];
           },
           error => {
               this.error = error.error;
